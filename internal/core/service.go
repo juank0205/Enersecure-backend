@@ -1,5 +1,8 @@
 package core
 
+import "github.com/juank0205/Enersecure-backend/internal/models"
+
 type UserService interface {
-	GetWelcomeMessage(name string) string
+	Login(email string, password string) (int64, error)
+	Register(client *models.Client) (bool, error)
 }

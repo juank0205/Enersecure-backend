@@ -22,9 +22,8 @@ func SetupRoutes(db *db.DB, rootMux *http.ServeMux) {
 	)
 
 	publicMux := http.NewServeMux()
-	publicMux.HandleFunc("GET /welcome", h.Welcome)
-	// publicMux.HandleFunc("POST /login", h.HandleLogin)
-	// publicMux.HandleFunc("POST /register", h.HandleRegister)
+	publicMux.HandleFunc("POST /login", h.HandleLogin)
+	publicMux.HandleFunc("POST /register", h.HandleRegister)
 
 	privateMux := http.NewServeMux()
 	// privateMux.HandleFunc("GET /test", h.HandleTest)
