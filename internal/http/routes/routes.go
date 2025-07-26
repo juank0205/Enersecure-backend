@@ -11,11 +11,13 @@ import (
 func SetupRoutes(db *db.DB, rootMux *http.ServeMux) {
 	h := handlers.NewHandler(db)
 	publicStack := middlewares.CreateStack(
+		middlewares.CORSMiddleware,
 		middlewares.Logging,
 		middlewares.Recover,
 	)
 
 	privateStack := middlewares.CreateStack(
+		middlewares.CORSMiddleware,
 		middlewares.Logging,
 		middlewares.Recover,
 		middlewares.AuthMiddleware,
