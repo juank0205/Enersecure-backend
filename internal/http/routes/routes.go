@@ -47,6 +47,6 @@ func SetupRoutes(db *db.DB, rootMux *http.ServeMux) {
 	// privateMux.HandleFunc("POST /storages/create", h.HandleCreateStorage)
 	// privateMux.HandleFunc("GET /storages", h.HandleGetStorages)
 	//
-	rootMux.Handle("/api/v1/public/", http.StripPrefix("/api/public", publicStack(publicMux)))
-	rootMux.Handle("/api/v2/private/", http.StripPrefix("/api/private", privateStack(privateMux)))
+	rootMux.Handle("/api/v1/public/", http.StripPrefix("/api/v1/public", publicStack(publicMux)))
+	rootMux.Handle("/api/v1/private/", http.StripPrefix("/api/v1/private", privateStack(privateMux)))
 }
