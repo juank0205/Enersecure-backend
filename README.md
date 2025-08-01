@@ -10,7 +10,7 @@ http://localhost:8080/api/v1
 ```
 ### PUBLIC endpoints
 
-use the base url `http://localhost:8080/api/v1/public` and expose the following endpoints.
+use the base url `https://localhost:8443/api/v1/public` and expose the following endpoints.
 
 #### POST /login
 
