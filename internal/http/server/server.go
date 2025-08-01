@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/juank0205/Enersecure-backend/internal/db"
@@ -12,11 +13,9 @@ func CreateMux() *http.ServeMux {
 }
 
 func StartServer(db *db.DB, mux *http.ServeMux, port uint) {
-	s := http.Server{
-		Addr:    fmt.Sprintf(":%d", port),
-		Handler: mux,
-	}
-
 	fmt.Printf("Server listening on port %d\n", port)
-	s.ListenAndServe()
+	err := http.ListenAndServeTLS(fmt.Sprintf(":%d", port), "cert/cert.pem", "cert/key.pem", mux)
+	if err != nil {
+		log.Fatalf("Failed to start HTTPS server: %v\n", err)
+	}
 }
